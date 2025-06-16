@@ -1,0 +1,45 @@
+.mylist {
+  background-color: #111;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.mylist .mylist-content {
+  padding: 80px 40px 40px;
+}
+
+.mylist .mylist-content h2 {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.mylist .empty-msg {
+  color: #aaa;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.mylist .card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.mylist .card {
+  width: 200px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+
+
+.mylist .card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.mylist .card p {
+  margin-top: 8px;
+  font-size: 14px;
+  text-align: center;
+}

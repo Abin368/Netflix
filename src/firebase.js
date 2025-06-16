@@ -1,7 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getFirestore, setDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { use } from "react";
 import { toast } from "react-toastify";
@@ -52,4 +52,30 @@ const logout =async()=>{
     signOut(auth)
 }
 
-export {auth,db,login,signup,logout}
+
+const addToWatchLater = async (userId, movie) => {
+  try {
+    await setDoc(doc(db, 'users', userId, 'watchLater', movie.id.toString()), {
+      ...movie,
+      addedAt: new Date(),
+    });
+    toast.success("Added to Watch Later");
+  } catch (error) {
+    console.error(error);
+    toast.error("Failed to add");
+  }
+};
+
+
+const removeFromWatchLater = async(userId,movieId)=>{
+  try{
+    await deleteDoc(doc(db,'users',userId,'watchLater',movieId.toString()));
+    toast.success("Remove from watch Later")
+
+  }catch(error){
+     console.error(error);
+    toast.error("Failed to remove");
+  }
+}
+
+export {auth,db,login,signup,logout,addToWatchLater,removeFromWatchLater}

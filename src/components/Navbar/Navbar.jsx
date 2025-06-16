@@ -6,9 +6,11 @@ import Bell_icon from '../../assets/bell_icon.svg'
 import profile_icon from '../../assets/profile_img.png'
 import caret_icon from '../../assets/caret_icon.svg'
 import { logout } from '../../firebase'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
    const navRef =useRef()
+   const navigate =useNavigate()
 
    useEffect(()=>{
     window.addEventListener('scroll',()=>{
@@ -26,11 +28,11 @@ const Navbar = () => {
             <img src={Logo} alt="" />
 
             <ul>
-              <li>Home</li>
+              <li onClick={()=>navigate('/')}>Home</li>
               <li>TV Shows</li>
               <li>Movies</li>
               <li>New & Popular</li>
-              <li>My List</li>
+              <li onClick={()=>navigate('/my-list')}>My List</li>
               <li>Browse by Language</li>
             </ul>
          </div>
